@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Condition.text;
 
-public class webFormTest {
+public class WebFormTest {
     @BeforeAll
     static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";
@@ -23,7 +23,7 @@ public class webFormTest {
         $("#lastName").setValue("Ahmedov");
         $("#userEmail").setValue("testahmed@gmail.com");
         $("#gender-radio-1+label").click();
-        $("#userNumber").setValue("79047446844");
+        $("#userNumber").setValue("7904744684");
         $("#dateOfBirth #dateOfBirthInput").click();
         $(".react-datepicker__month-select").click();
         $(".react-datepicker__month-select").selectOption("April");
@@ -46,12 +46,12 @@ public class webFormTest {
         $("[class=table-responsive]").shouldHave(text("Ahmed Ahmedov"));
         $("[class=table-responsive]").shouldHave(text("testahmed@gmail.com"));
         $("[class=table-responsive]").shouldHave(text("Male"));
-        $("[class=table-responsive]").shouldHave(text("79047446844"));
+        $("[class=table-responsive]").shouldHave(text("7904744684"));
         $("[class=table-responsive]").shouldHave(text("01 April,1985"));
         $("[class=table-responsive]").shouldHave(text("Maths"));
         $("[class=table-responsive]").shouldHave(text("Sports, Reading, Music"));
         $("[class=table-responsive]").shouldHave(text("leopard.png"));
-        $("[class=table-responsive]").shouldHave(text("USA"));
+        $("[class=table-responsive]").shouldHave(text("Istanbul"));
         $("[class=table-responsive]").shouldHave(text("Haryana Karnal"));
     }
 }
