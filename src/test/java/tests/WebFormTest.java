@@ -2,7 +2,9 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static com.codeborne.selenide.Selenide.$;
+import org.junit.jupiter.api.AfterEach;
+import com.codeborne.selenide.Selenide;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Condition.text;
 
@@ -19,6 +21,9 @@ public class WebFormTest {
     @Test
     void webFormTest() {
         open("/automation-practice-form");
+        executeJavaScript ("$('#fixedban').remove()");
+        executeJavaScript ("$('footer').remove()");
+
         $("#firstName").setValue("Ahmed");
         $("#lastName").setValue("Ahmedov");
         $("#userEmail").setValue("testahmed@gmail.com");
@@ -36,7 +41,6 @@ public class WebFormTest {
         $("#hobbies-checkbox-1+label").click();
         $("#hobbies-checkbox-2+label").click();
         $("#hobbies-checkbox-3+label").click();
-        $("#uploadPicture").scrollIntoView(true);
         $("#uploadPicture").uploadFromClasspath("leopard.png");
         $("#currentAddress").setValue("Istanbul");
         $("#react-select-3-input").setValue("Haryana").pressEnter();
@@ -53,5 +57,9 @@ public class WebFormTest {
         $("[class=table-responsive]").shouldHave(text("leopard.png"));
         $("[class=table-responsive]").shouldHave(text("Istanbul"));
         $("[class=table-responsive]").shouldHave(text("Haryana Karnal"));
+    }
+    @AfterEach
+    void afterEach() {
+        Selenide.closeWebDriver();
     }
 }
