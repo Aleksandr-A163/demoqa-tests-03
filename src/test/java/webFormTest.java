@@ -1,56 +1,59 @@
-import com.codeborne.selenide.Condition;
+package tests;
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.text;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class webFormTest {
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void beforeAll() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
-
-
+        Configuration.holdBrowserOpen = true;
     }
 
 
     @Test
-    void practiceForm() {
+    void webFormTest() {
         open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
-        $("[id=firstName]").setValue("Ahmed");
-        $("[id=lastName]").setValue("Ahmedov");
-        $("[id=userEmail]").setValue("koreantech620@mail.ru").pressEnter();
-        $("label[class=custom-control-label]").click();
-        $("[id=userNumber]").setValue("79836025158");
-        $("[id=dateOfBirthInput]").click();
-        $("[class=react-datepicker__year-select]>[value='2000']").click();
-        $("[class=react-datepicker__month-select]>[value='3']").click();
-        $(".react-datepicker__month .react-datepicker__day--024").click();
-        $("[id=subjectsContainer]").click();
-        $("[id=subjectsInput]").setValue("English").pressEnter();
-        $("[id=subjectsInput]").setValue("Maths").pressEnter();
-        $("#hobbiesWrapper > div.col-md-9.col-sm-12 > div:nth-child(1) > label").click();
-        $("[id=uploadPicture]").uploadFromClasspath("D.jpg");
-        $("[id=currentAddress]").click();
-        $("[id=currentAddress]").setValue("Lenina 25");
-        $("[id=react-select-3-input]").setValue("NCR").pressEnter();
-        $("[id=react-select-4-input]").setValue("Delhi").pressEnter();
-        $("[id=submit]").submit();
-        $("[class=table-responsive]").shouldHave(Condition.text("Ahmed Ahmedov"));
-        $("[class=table-responsive]").shouldHave(Condition.text("koreantech620@mail.ru"));
-        $("[class=table-responsive]").shouldHave(Condition.text("1 December,1975"));
-        $("[class=table-responsive]").shouldHave(Condition.text("Male"));
-        $("[class=table-responsive]").shouldHave(Condition.text("7983602515"));
-        $("[class=table-responsive]").shouldHave(Condition.text("Arabic"));
-        $("[class=table-responsive]").shouldHave(Condition.text("Maths"));
-        $("[class=table-responsive]").shouldHave(Condition.text("Sports"));
-        $("[class=table-responsive]").shouldHave(Condition.text("D.jpg"));
-        $("[class=table-responsive]").shouldHave(Condition.text("Aljamia 95"));
-        $("[class=table-responsive]").shouldHave(Condition.text("DDG Cuma"));
-        $("#closeLargeModal").click();
+        $("#firstName").setValue("Ahmed");
+        $("#lastName").setValue("Ahmedov");
+        $("#userEmail").setValue("testahmed@gmail.com");
+        $("#gender-radio-1+label").click();
+        $("#userNumber").setValue("79047446844");
+        $("#dateOfBirth #dateOfBirthInput").click();
+        $(".react-datepicker__month-select").click();
+        $(".react-datepicker__month-select").selectOption("April");
+        $(".react-datepicker__month-select").click();
+        $(".react-datepicker__year-select").click();
+        $(".react-datepicker__year-select").selectOption("1985");
+        $(".react-datepicker__year-select").click();
+        $(".react-datepicker__day--001").click();
+        $("#subjectsInput").setValue("Maths").pressEnter();
+        $("#hobbies-checkbox-1+label").click();
+        $("#hobbies-checkbox-2+label").click();
+        $("#hobbies-checkbox-3+label").click();
+        $("#uploadPicture").scrollIntoView(true);
+        $("#uploadPicture").uploadFromClasspath("leopard.png");
+        $("#currentAddress").setValue("Istanbul");
+        $("#react-select-3-input").setValue("Haryana").pressEnter();
+        $("#react-select-4-input").setValue("Karnal").pressEnter();
+        $("#submit").click();
+
+        $("[class=table-responsive]").shouldHave(text("Ahmed Ahmedov"));
+        $("[class=table-responsive]").shouldHave(text("testahmed@gmail.com"));
+        $("[class=table-responsive]").shouldHave(text("Male"));
+        $("[class=table-responsive]").shouldHave(text("79047446844"));
+        $("[class=table-responsive]").shouldHave(text("01 April,1985"));
+        $("[class=table-responsive]").shouldHave(text("Maths"));
+        $("[class=table-responsive]").shouldHave(text("Sports, Reading, Music"));
+        $("[class=table-responsive]").shouldHave(text("leopard.png"));
+        $("[class=table-responsive]").shouldHave(text("USA"));
+        $("[class=table-responsive]").shouldHave(text("Haryana Karnal"));
     }
 }
