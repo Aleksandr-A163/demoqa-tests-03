@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4e65062-0e5e-45f5-8c51-aa5e07aec841" name="Changes" comment="added web tests" />
+    <list default="true" id="d4e65062-0e5e-45f5-8c51-aa5e07aec841" name="Changes" comment="added web tests">
+      <change beforePath="$PROJECT_DIR$/src/test/java/tests/webFormTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/webFormTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718370319539</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added web tests">
+      <option name="closed" value="true" />
+      <created>1718372104765</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1718372104765</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
