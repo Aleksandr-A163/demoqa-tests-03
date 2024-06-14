@@ -6,8 +6,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Condition.text;
 
-import static com.codeborne.selenide.Selenide.*;
-
 public class webFormTest {
     @BeforeAll
     static void beforeAll() {
