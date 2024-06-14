@@ -17,7 +17,7 @@ public class webFormTest {
 
 
     @Test
-    void practiceForm() {
+    void webForm() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
